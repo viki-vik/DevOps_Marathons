@@ -1,1 +1,0 @@
-{"rsync":{"/vagrant":{"type":"rsync","guestpath":"/vagrant","hostpath":"/home/victoria/DevOps_Marathons","disabled":false,"__vagrantfile":true,"owner":"vagrant","group":"vagrant"}}}
