@@ -47,10 +47,11 @@ agent {node {label 'workers'}}
 			}
 		
 		}
+		stage('Remove Docker Containers') {
+          		sh 'docker rm $(docker ps --all --quiet) || true'
+        	}
 	 }
-	stage('Remove Docker Containers') {
-          sh 'docker rm $(docker ps --all --quiet) || true'
-        }
+	
 	post{
 		always{
 			cleanWs(cleanWhenSuccess: true, 
