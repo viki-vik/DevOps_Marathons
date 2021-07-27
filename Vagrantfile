@@ -52,6 +52,10 @@ systemctl restart sshd
  
 wget -O- get.docker.com | bash
 
+systemctl start docker
+usermod -aG docker $USER
+
+
 SCRIPT2
 
 
