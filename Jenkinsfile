@@ -51,8 +51,7 @@ agent {node {label 'workers'}}
 	post{
 		always{
 			cleanWs(cleanWhenSuccess: true, 
-			deleteDirs: true, 
-			externalDelete: sh '''docker container rm html_$(date +%Y)''', 
+			deleteDirs: true, 			 
 			notFailBuild: true)
 			}
 	}
