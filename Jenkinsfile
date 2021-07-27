@@ -33,12 +33,14 @@ agent {node {label 'workers'}}
 
 			steps{
 				sh '''
+					container_ip=$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' html_$(date +%Y))
+
 					if $(which curl);then
-						curl localhost:8080
+						curl $container_ip
 					else
 						sudo yum install -y  curl
 						
-						curl localhost:8080
+						curl $container_ip
 					fi
 					
 				'''
@@ -47,7 +49,7 @@ agent {node {label 'workers'}}
 
 		post{
 			always{
-				cleanWs cleanWhenSuccess: false, deleteDirs: true, externalDelete: 'docker container rm index_$(date +%Y)', notFailBuild: true
+				cleanWs cleanWhenSuccess: false, deleteDirs: true, externalDelete: 'docker container rm html_$(date +%Y)', notFailBuild: true
 				}
 			}
 		}
