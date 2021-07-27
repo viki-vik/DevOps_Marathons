@@ -23,7 +23,7 @@ agent {node {label 'workers'}}
 		stage('deploying docker container with  new app'){
 			steps{
 			sh '''
-				docker run -d -p 80:8080 --name=html_$(date +%Y%m%d%H%M) html_app
+				docker run -d -p 80:8080 --name=html_$(date +%Y) html_app
 			   '''
 			}
 
@@ -47,7 +47,7 @@ agent {node {label 'workers'}}
 
 		post{
 			always{
-				cleanWs cleanWhenSuccess: false, deleteDirs: true, externalDelete: 'docker container rm index_$(date+%Y)', notFailBuild: true
+				cleanWs cleanWhenSuccess: false, deleteDirs: true, externalDelete: 'docker container rm index_$(date +%Y)', notFailBuild: true
 				}
 			}
 		}
