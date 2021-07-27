@@ -50,7 +50,8 @@ agent {node {label 'workers'}}
 		stage('Remove Docker Containers') {
 			steps{
           			sh '''
-					docker rm $(docker ps --all --quiet) || true
+					docker container stop $(docker ps --all --quiet)
+					docker rm $(docker ps --all --quiet)
 				'''
 			}
         	}
