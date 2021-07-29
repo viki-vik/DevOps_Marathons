@@ -50,7 +50,7 @@ agent {node {label 'workers'}}
 		stage('List existing Docker Containers') {
 			steps{
           			sh '''
-					docker ps --all)					
+					docker ps --all					
 				'''
 			}
         	}
@@ -60,7 +60,7 @@ agent {node {label 'workers'}}
 		always{
 			cleanWs(cleanWhenSuccess: true, 
 			deleteDirs: true, 
-			externalDelete: 'docker container stop $(docker ps --all --quiet) / && docker rm -f html_$(date +%Y)',
+			externalDelete: 'docker container stop $(docker ps --all --quiet) ',
 			notFailBuild: true)
 			}
 	}
