@@ -50,7 +50,7 @@ agent {node {label 'workers'}}
 	 }	
 	post{
 		always{
-			cleanWs externalDelete: 'docker rm -f `html_$(year)`'
+			cleanWs externalDelete: 'docker rm -f html_`date +%Y`'
 			}
 	}
 }
