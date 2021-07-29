@@ -60,7 +60,7 @@ agent {node {label 'workers'}}
 		always{
 			cleanWs(cleanWhenSuccess: true, 
 			deleteDirs: true, 
-			externalDelete: 'docker container rm html_2021',
+			externalDelete: 'docker rm html_2021',
 			notFailBuild: true)
 			}
 	}
