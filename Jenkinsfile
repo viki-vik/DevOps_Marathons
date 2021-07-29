@@ -47,10 +47,10 @@ agent {node {label 'workers'}}
 			}
 		
 		}
-		stage('Remove Docker Containers') {
+		stage('List existing Docker Containers') {
 			steps{
           			sh '''
-					docker container stop $(docker ps --all --quiet)					
+					docker ps --all)					
 				'''
 			}
         	}
