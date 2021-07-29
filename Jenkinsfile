@@ -50,8 +50,7 @@ agent {node {label 'workers'}}
 		stage('Remove Docker Containers') {
 			steps{
           			sh '''
-					docker container stop $(docker ps --all --quiet)
-					docker rm $(docker ps --all --quiet)
+					docker container stop $(docker ps --all --quiet)					
 				'''
 			}
         	}
@@ -60,7 +59,8 @@ agent {node {label 'workers'}}
 	post{
 		always{
 			cleanWs(cleanWhenSuccess: true, 
-			deleteDirs: true, 			 
+			deleteDirs: true, 
+			externalDelete: 'docker rm $(docker ps --all --quiet)'
 			notFailBuild: true)
 			}
 	}
