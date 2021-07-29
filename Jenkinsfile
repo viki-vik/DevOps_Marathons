@@ -46,19 +46,11 @@ agent {node {label 'workers'}}
 				'''
 			}
 		
-		}
-		stage('List existing Docker Containers') {
-			steps{
-          			sh '''
-					docker ps --all					
-				'''
-			}
-        	}
-	 }
-	
+		}		
+	 }	
 	post{
 		always{
-			cleanWs externalDelete: 'docker rm -f "html_$(year)"'
+			cleanWs externalDelete: 'docker rm -f html_$(date +%Y)'
 			}
 	}
 }
